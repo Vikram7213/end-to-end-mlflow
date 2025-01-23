@@ -1,0 +1,16 @@
+README.md
+setup.py
+src/ml_project/__init__.py
+src/ml_project/pipeline.py
+src/ml_project.egg-info/PKG-INFO
+src/ml_project.egg-info/SOURCES.txt
+src/ml_project.egg-info/dependency_links.txt
+src/ml_project.egg-info/top_level.txt
+src/ml_project/components/__init__.py
+src/ml_project/config/__init__.py
+src/ml_project/config/configuaration.py
+src/ml_project/constants/__init__.py
+src/ml_project/entity/__init__.py
+src/ml_project/entity/config_entity.py
+src/ml_project/utils/__init__.py
+src/ml_project/utils/com.py
