@@ -1,7 +1,12 @@
-artifact_root: artifact
+artifact_root: artifacts
 
 data_ingestion:
   rootdir: artifacts/data_ingestion
   url: https://github.com/entbappy/Branching-tutorial/raw/master/winequality-data.zip
   localdir: artifacts/data_ingestion/data.zip
   unzipdir: artifacts/data_ingestion
+
+data_validation:
+  rootdir: artifacts/data_validation
+  unzipdir: artifacts/data_ingestion/winequality-red.csv
+  status: artifacts/data_validation/status.txt

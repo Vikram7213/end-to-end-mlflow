@@ -7,3 +7,12 @@ class DataIngest:
     source:str
     zipdir:Path
     unzipdir:Path
+
+@dataclass(frozen=True)
+class DataValid:
+    rootdir:Path
+    unzipdir:Path
+    statusfile:str
+    schema:dict
+    
+
