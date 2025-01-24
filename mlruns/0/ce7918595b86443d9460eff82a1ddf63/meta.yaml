@@ -1,0 +1,15 @@
+artifact_uri: file:///G:/linkedin-proj/project-1/end-to-end-mlflow/mlruns/0/ce7918595b86443d9460eff82a1ddf63/artifacts
+end_time: 1737705537501
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: ce7918595b86443d9460eff82a1ddf63
+run_name: charming-bass-777
+run_uuid: ce7918595b86443d9460eff82a1ddf63
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1737705537210
+status: 3
+tags: []
+user_id: fates
