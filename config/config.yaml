@@ -1,0 +1,7 @@
+artifact_root: artifact
+
+data_ingestion:
+  rootdir: artifacts/data_ingestion
+  url: https://github.com/entbappy/Branching-tutorial/raw/master/winequality-data.zip
+  localdir: artifacts/data_ingestion/data.zip
+  unzipdir: artifacts/data_ingestion

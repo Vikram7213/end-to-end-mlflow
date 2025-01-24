@@ -26,7 +26,7 @@ lof = [
     'Dockerfile',
     'req.txt',
     'setup.py',
-    'trails/t1/ipynb',
+    'trails/t1.ipynb',
     'templates/index.html'
 ]
 
