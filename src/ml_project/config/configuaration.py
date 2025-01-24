@@ -4,7 +4,7 @@ from ml_project.entity.config_entity import DataIngest
 from ml_project.entity.config_entity import DataValid
 from ml_project.entity.config_entity import DataTransform
 from ml_project.entity.config_entity import ModelTrain
-
+from ml_project.entity.config_entity import Evaluation
 class ConfigurationManager:
     def __init__(
             self,
@@ -73,6 +73,23 @@ class ConfigurationManager:
         )
 
         return model_conf
+    
+    def get_eval_conf(self)->Evaluation:
+        config = self.conf.model_evaluation
+        par = self.params.ElasticNet
+        s = self.sche.TARGET
+        create_dir([config.rootdir])
+        eval_conf = Evaluation(
+            rootdir=config.rootdir,
+            test=config.testdir,
+            model_path=config.model,
+            all_params=par,
+            metric_file=config.metrics_name,
+            target_col=s.name,
+            mlflowuri='http://localhost:5000'
+        )
+
+        return eval_conf
     
 
     

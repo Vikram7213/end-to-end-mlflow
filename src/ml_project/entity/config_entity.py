@@ -30,3 +30,12 @@ class ModelTrain:
     l1_ratio: float
     target:str
 
+@dataclass(frozen=True)
+class Evaluation:
+    rootdir:Path
+    test:Path
+    model_path:Path
+    metric_file:Path
+    mlflowuri: str
+    target_col:str
+    all_params:dict
