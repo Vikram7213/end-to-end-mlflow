@@ -10,3 +10,7 @@ data_validation:
   rootdir: artifacts/data_validation
   unzipdir: artifacts/data_ingestion/winequality-red.csv
   status: artifacts/data_validation/status.txt
+
+data_transformation:
+  rootdir: artifacts/data_transformation
+  data: artifacts/data_ingestion/winequality-red.csv

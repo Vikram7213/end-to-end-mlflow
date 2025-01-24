@@ -15,4 +15,10 @@ class DataValid:
     statusfile:str
     schema:dict
     
+@dataclass(frozen=True)
+class DataTransform:
+    rootdir: Path
+    data: Path
+
+
 

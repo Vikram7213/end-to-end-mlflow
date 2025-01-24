@@ -2,6 +2,7 @@ from ml_project.constants import *
 from ml_project.utils.com import read_yml, create_dir
 from ml_project.entity.config_entity import DataIngest
 from ml_project.entity.config_entity import DataValid
+from ml_project.entity.config_entity import DataTransform
 
 class ConfigurationManager:
     def __init__(
@@ -42,6 +43,17 @@ class ConfigurationManager:
         )
 
         return validate_config
+    
+    def get_transform_conf(self)->DataTransform:
+        config = self.conf.data_transformation
+        create_dir([config.rootdir])
+
+        transform_config = DataTransform(
+            rootdir=config.rootdir,
+            data=config.data
+        )
+
+        return transform_config
     
 
     
