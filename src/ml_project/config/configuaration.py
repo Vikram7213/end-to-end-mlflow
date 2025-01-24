@@ -3,6 +3,7 @@ from ml_project.utils.com import read_yml, create_dir
 from ml_project.entity.config_entity import DataIngest
 from ml_project.entity.config_entity import DataValid
 from ml_project.entity.config_entity import DataTransform
+from ml_project.entity.config_entity import ModelTrain
 
 class ConfigurationManager:
     def __init__(
@@ -12,7 +13,7 @@ class ConfigurationManager:
             param = PARAMS_PATH):
         self.conf = read_yml(conf)
         self.sche = read_yml(sche)
-        self.param = read_yml(param)
+        self.params = read_yml(param)
 
         create_dir([self.conf.artifact_root])
 
@@ -54,6 +55,24 @@ class ConfigurationManager:
         )
 
         return transform_config
+    
+    def get_model_conf(self)->ModelTrain:
+        config = self.conf.model_trainer
+        par = self.params.ElasticNet
+        sch = self.sche.TARGET
+        create_dir([config.rootdir])
+
+        model_conf = ModelTrain(
+            rootdir=config.rootdir,
+            train=config.traindir,
+            test=config.testdir,
+            name=config.model,
+            alpha=par.alpha,
+            l1_ratio=par.l1_ratio,
+            target=sch.name
+        )
+
+        return model_conf
     
 
     

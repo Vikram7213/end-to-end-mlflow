@@ -2,7 +2,7 @@ from ml_project import logger
 from ml_project.pipeline.stage1 import IngestionPipeline
 from ml_project.pipeline.stage2 import DataValidationPipeline
 from ml_project.pipeline.stage3 import DataTransformationPipeline
-
+from ml_project.pipeline.stage4 import ModelTrainingPipeline
 stage = 'ingestion'
 try:
     logger.info(f'the stage {stage} has started')
@@ -31,3 +31,13 @@ try:
 
 except Exception as e:
     raise e
+
+stage = 'training'
+try:
+    logger.info(f'stage {stage} is started')
+    e = ModelTrainingPipeline()
+    e.main()
+    logger.info(f'the stage {stage} is completed successfully!')
+
+except Exception as e:
+     raise e
