@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wine Quality Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #ffefba, #ffffff);
+            color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #4CAF50;
+        }
+        form {
+            max-width: 700px;
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .form-group-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #555;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        .btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 18px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+        .btn:hover {
+            background-color: #45a049;
+        }
+        .result {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <form id="wineQualityForm">
+        <h1>Wine Quality Prediction</h1>
+        <!-- Two-column layout for inputs -->
+        <div class="form-group-container">
+            <div class="form-group">
+                <label for="fixed_acidity">Fixed Acidity:</label>
+                <input type="number" id="fixed_acidity" name="fixed acidity" step="0.01" required>
+            </div>
+            <div class="form-group">
+                <label for="volatile_acidity">Volatile Acidity:</label>
+                <input type="number" id="volatile_acidity" name="volatile acidity" step="0.01" required>
+            </div>
+            <div class="form-group">
+                <label for="citric_acid">Citric Acid:</label>
+                <input type="number" id="citric_acid" name="citric acid" step="0.01" required>
+            </div>
+            <div class="form-group">
+                <label for="residual_sugar">Residual Sugar:</label>
+                <input type="number" id="residual_sugar" name="residual sugar" step="0.01" required>
+            </div>
+            <div class="form-group">
+                <label for="chlorides">Chlorides:</label>
+                <input type="number" id="chlorides" name="chlorides" step="0.0001" required>
+            </div>
+            <div class="form-group">
+                <label for="free_sulfur_dioxide">Free Sulfur Dioxide:</label>
+                <input type="number" id="free_sulfur_dioxide" name="free sulfur dioxide" step="0.01" required>
+            </div>
+            <div class="form-group">
+                <label for="total_sulfur_dioxide">Total Sulfur Dioxide:</label>
+                <input type="number" id="total_sulfur_dioxide" name="total sulfur dioxide" step="0.01" required>
+            </div>
+            <div class="form-group">
+                <label for="density">Density:</label>
+                <input type="number" id="density" name="density" step="0.0001" required>
+            </div>
+            <div class="form-group">
+                <label for="pH">pH:</label>
+                <input type="number" id="pH" name="pH" step="0.01" required>
+            </div>
+            <div class="form-group">
+                <label for="sulphates">Sulphates:</label>
+                <input type="number" id="sulphates" name="sulphates" step="0.01" required>
+            </div>
+            <div class="form-group">
+                <label for="alcohol">Alcohol:</label>
+                <input type="number" id="alcohol" name="alcohol" step="0.01" required>
+            </div>
+        </div>
+        <button type="submit" class="btn">Predict Quality</button>
+    </form>
+
+    <div class="result" id="result"></div>
+
+    <script>
+        document.getElementById('wineQualityForm').addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            const data = Object.fromEntries(formData.entries());
+
+            const response = await fetch('http://127.0.0.1:8080/predict', {  // Update with your server's URL if necessary
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            });
+
+            if (response.ok) {
+                const result = await response.json();
+                document.getElementById('result').textContent = `Predicted Quality: ${result.quality}`;
+            } else {
+                const error = await response.json();
+                document.getElementById('result').textContent = `Error: ${error.error}`;
+            }
+        });
+    </script>
+
+</body>
+</html>
